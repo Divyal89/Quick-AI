@@ -417,27 +417,44 @@ The HTML MUST NOT exceed one printed page.
 
 Use the following CSS:
 
+Use the following CSS exactly:
+
 body{
     width:210mm;
-    height:297mm;
+    min-height:297mm;
     margin:0;
     padding:14px;
+    box-sizing:border-box;
+
     font-family:Arial, Helvetica, sans-serif;
     font-size:11px;
-    line-height:1.15;
+    line-height:1.18;
     color:#222;
-    overflow:hidden;
-    box-sizing:border-box;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+}
+
+.resume{
+    min-height:265mm;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+}
+
+main{
+    flex:1;
 }
 
 h1{
     font-size:22px;
-    margin:0 0 6px 0;
+    margin:0 0 6px;
 }
 
 h2{
     font-size:13px;
-    margin:8px 0 4px;
+    margin:10px 0 5px;
     padding-bottom:2px;
     border-bottom:1px solid #e91e8c;
 }
@@ -447,14 +464,13 @@ p{
 }
 
 ul{
-    margin:3px 0 5px 18px;
+    margin:4px 0 6px 18px;
     padding:0;
 }
 
 li{
-    margin:1px 0;
+    margin:2px 0;
 }
-
 Avoid unnecessary whitespace.
 
 ==========================
@@ -498,31 +514,51 @@ Return only the JSON object.
 ==========================
 PAGE BALANCING (VERY IMPORTANT)
 ==========================
+==========================
+PAGE BALANCING (VERY IMPORTANT)
+==========================
 
-The resume must visually fill the entire A4 page.
+The generated resume must visually occupy 95–99% of a single A4 page.
 
-The final HTML should occupy approximately 95–98% of the printable page height.
+Do NOT leave noticeable blank space at the bottom.
 
-Do NOT leave large blank space at the bottom.
+Wrap the complete resume inside:
 
-If the resume content is shorter than one page:
+<div class="resume">
 
-• Slightly expand the Professional Summary.
+<header>
+Candidate Name
+Contact Information
+</header>
+
+<main>
+Professional Summary
+Technical Skills
+Education
+Experience
+Projects
+Certifications & Achievements
+</main>
+
+</div>
+
+The HTML should naturally stretch to fill the printable page.
+
+If the content is too short:
+
+• Expand the Professional Summary to 4–5 lines.
 • Add more implementation details to existing projects.
 • Expand existing experience bullets.
-• Expand coursework naturally.
-• Increase spacing between major sections slightly.
-• Increase line-height slightly (maximum 1.22).
-• Increase spacing after section headings slightly.
-• Increase bullet spacing slightly.
+• Expand relevant coursework.
+• Expand existing project descriptions.
+• Slightly increase spacing between major sections.
+• Slightly increase line-height up to 1.20.
 
-Never invent fake companies, projects, experience, certifications, metrics, or achievements.
+Never invent companies, internships, projects, certifications, achievements, or metrics.
 
-Only elaborate information already provided by the candidate.
+Only elaborate information already present in the candidate profile.
 
-The page should look balanced from top to bottom like a professionally designed resume.
-
-The last section should end close to the bottom margin.
+The final resume should appear professionally balanced, with the last section ending close to the bottom margin.
 `;
   const response = await ai.models.generateContent({
     model: "gemini-2.5-flash",
