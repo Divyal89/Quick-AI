@@ -8,6 +8,7 @@ const Home = () => {
   const { loading, generateReport, reports } = useInterview();
   const [jobDescription, setJobDescription] = useState("");
   const [selfDescription, setSelfDescription] = useState("");
+  const [selectedFileName, setSelectedFileName] = useState("");
   const resumeInputRef = useRef();
 
   const navigate = useNavigate();
@@ -137,9 +138,14 @@ const Home = () => {
                   </svg>
                 </span>
                 <p className="dropzone__title">
-                  Click to upload or drag &amp; drop
+                  {selectedFileName || "Click to upload or drag & drop"}
                 </p>
-                <p className="dropzone__subtitle">PDF or DOCX (Max 5MB)</p>
+
+                <p className="dropzone__subtitle">
+                  {selectedFileName
+                    ? "✅ Resume selected successfully"
+                    : "PDF or DOCX (Max 5MB)"}
+                </p>
                 <input
                   ref={resumeInputRef}
                   hidden
@@ -147,6 +153,13 @@ const Home = () => {
                   id="resume"
                   name="resume"
                   accept=".pdf,.docx"
+                  onChange={(e) => {
+                    if (e.target.files.length > 0) {
+                      setSelectedFileName(e.target.files[0].name);
+                    } else {
+                      setSelectedFileName("");
+                    }
+                  }}
                 />
               </label>
             </div>
