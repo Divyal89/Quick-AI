@@ -122,7 +122,7 @@ async function generatePdfFromHtml(htmlContent) {
   const browser = await puppeteer.launch({
     args: chromium.args,
     executablePath: await chromium.executablePath(),
-    headless: true,
+    headless: chromium.headless,
   });
 
   const page = await browser.newPage();
@@ -130,7 +130,6 @@ async function generatePdfFromHtml(htmlContent) {
   await page.setContent(htmlContent, {
     waitUntil: "networkidle0",
   });
-  await page.emulateMediaType("screen");
 
   const pdfBuffer = await page.pdf({
     format: "A4",
