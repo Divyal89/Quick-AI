@@ -1,0 +1,145 @@
+$bg: #0f0f0f;
+$pink: #e91e8c;
+$orange: #f97316;
+$green: #22c55e;
+
+.loading-page {
+  min-height: 100vh;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  background:
+    radial-gradient(circle at top left, rgba(233, 30, 140, 0.15), transparent),
+    radial-gradient(
+      circle at bottom right,
+      rgba(249, 115, 22, 0.15),
+      transparent
+    ),
+    #0f0f0f;
+}
+
+.loading-card {
+  width: 520px;
+
+  background: #181818;
+
+  border-radius: 22px;
+
+  padding: 45px;
+
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.robot {
+  font-size: 70px;
+
+  text-align: center;
+
+  animation: bounce 2s infinite;
+}
+
+.loading-card h1 {
+  text-align: center;
+
+  color: white;
+
+  margin-top: 10px;
+}
+
+.subtitle {
+  text-align: center;
+
+  color: #9f9f9f;
+
+  margin: 12px 0 35px;
+}
+
+.progress {
+  height: 12px;
+
+  background: #252525;
+
+  border-radius: 20px;
+
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+
+  border-radius: 20px;
+
+  background: linear-gradient(90deg, $pink, $orange);
+
+  transition: 0.6s;
+}
+
+.progress-number {
+  text-align: right;
+
+  margin-top: 8px;
+
+  color: white;
+
+  font-weight: 700;
+}
+
+.steps {
+  margin-top: 35px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 15px;
+}
+
+.step {
+  display: flex;
+
+  gap: 12px;
+
+  color: #777;
+
+  font-size: 15px;
+
+  transition: 0.3s;
+}
+
+.step.done {
+  color: $green;
+
+  font-weight: 600;
+}
+
+.step.active {
+  color: white;
+
+  animation: pulse 1s infinite;
+}
+
+.footer {
+  margin-top: 35px;
+
+  text-align: center;
+
+  color: #8d8d8d;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes bounce {
+  50% {
+    transform: translateY(-8px);
+  }
+}
