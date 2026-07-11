@@ -514,7 +514,7 @@ The page should look balanced from top to bottom like a professionally designed 
 The last section should end close to the bottom margin.
 `;
   const response = await ai.models.generateContent({
-    model: "gemini-3-flash-preview",
+    model: "gemini-2.5-flash",
     contents: prompt,
     config: {
       responseMimeType: "application/json",
