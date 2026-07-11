@@ -14,11 +14,23 @@ const Home = () => {
 
   const handleGenerateReport = async () => {
     const resumeFile = resumeInputRef.current.files[0];
+
+    console.log("Resume File:", resumeFile);
+
+    if (resumeFile) {
+      console.log("Name:", resumeFile.name);
+      console.log("Type:", resumeFile.type);
+      console.log("Size:", resumeFile.size);
+    } else {
+      console.log("No file selected");
+    }
+
     const data = await generateReport({
       jobDescription,
       selfDescription,
       resumeFile,
     });
+
     navigate(`/interview/${data._id}`);
   };
 

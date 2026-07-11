@@ -8,7 +8,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://quick-ai-n114.vercel.app"],
+    origin: "https://quick-ai-n114.vercel.app",
     credentials: true,
   }),
 );
